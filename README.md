@@ -1,0 +1,1 @@
+# studip-lib-uni-passau
