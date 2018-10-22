@@ -6,6 +6,8 @@ import de.femtopedia.studip.json.Contacts;
 import de.femtopedia.studip.json.Course;
 import de.femtopedia.studip.json.Courses;
 import de.femtopedia.studip.json.Events;
+import de.femtopedia.studip.json.Semester;
+import de.femtopedia.studip.json.Semesters;
 import de.femtopedia.studip.json.User;
 import de.femtopedia.studip.shib.ShibbolethClient;
 import java.io.IOException;
@@ -95,6 +97,24 @@ public class StudIPAPI {
 		EntityUtils.consume(e);
 		r.close();
 		return courses;
+	}
+
+	public Semesters getSemesters() throws IOException {
+		CloseableHttpResponse r = this.sc.get("https://studip.uni-passau.de/studip/api.php/semesters");
+		HttpEntity e = r.getEntity();
+		Semesters semesters = gson.fromJson(getString(e.getContent()), Semesters.class);
+		EntityUtils.consume(e);
+		r.close();
+		return semesters;
+	}
+
+	public Semester getSemester(String semesterID) throws IOException {
+		CloseableHttpResponse r = this.sc.get("https://studip.uni-passau.de/studip/api.php/semester/" + semesterID);
+		HttpEntity e = r.getEntity();
+		Semester semester = gson.fromJson(getString(e.getContent()), Semester.class);
+		EntityUtils.consume(e);
+		r.close();
+		return semester;
 	}
 
 }
