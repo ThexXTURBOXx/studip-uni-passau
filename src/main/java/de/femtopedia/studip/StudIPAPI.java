@@ -6,6 +6,7 @@ import de.femtopedia.studip.json.Contacts;
 import de.femtopedia.studip.json.Course;
 import de.femtopedia.studip.json.Courses;
 import de.femtopedia.studip.json.Events;
+import de.femtopedia.studip.json.Schedule;
 import de.femtopedia.studip.json.Semester;
 import de.femtopedia.studip.json.Semesters;
 import de.femtopedia.studip.json.User;
@@ -19,6 +20,7 @@ import org.apache.http.util.EntityUtils;
 
 public class StudIPAPI {
 
+	private static final String BASE_URL = "https://studip.uni-passau.de/studip/api.php/";
 	private ShibbolethClient sc;
 	private CloseableHttpClient client;
 	private Gson gson;
@@ -45,8 +47,12 @@ public class StudIPAPI {
 		return result.toString();
 	}
 
+	public CloseableHttpResponse get(String url) throws IOException {
+		return this.sc.get(BASE_URL + url);
+	}
+
 	public User getCurrentUserData() throws IOException {
-		CloseableHttpResponse r = this.sc.get("https://studip.uni-passau.de/studip/api.php/user");
+		CloseableHttpResponse r = this.get("user");
 		HttpEntity e = r.getEntity();
 		User user = gson.fromJson(getString(e.getContent()), User.class);
 		EntityUtils.consume(e);
@@ -55,7 +61,7 @@ public class StudIPAPI {
 	}
 
 	public User getUserData(String userID) throws IOException {
-		CloseableHttpResponse r = this.sc.get("https://studip.uni-passau.de/studip/api.php/user/" + userID);
+		CloseableHttpResponse r = this.get("user/" + userID);
 		HttpEntity e = r.getEntity();
 		User user = gson.fromJson(getString(e.getContent()), User.class);
 		EntityUtils.consume(e);
@@ -64,7 +70,7 @@ public class StudIPAPI {
 	}
 
 	public Contacts getContacts(String userID) throws IOException {
-		CloseableHttpResponse r = this.sc.get("https://studip.uni-passau.de/studip/api.php/user/" + userID + "/contacts");
+		CloseableHttpResponse r = this.get("user/" + userID + "/contacts");
 		HttpEntity e = r.getEntity();
 		Contacts contacts = gson.fromJson(getString(e.getContent()), Contacts.class);
 		EntityUtils.consume(e);
@@ -73,7 +79,7 @@ public class StudIPAPI {
 	}
 
 	public Events getEvents(String userID) throws IOException {
-		CloseableHttpResponse r = this.sc.get("https://studip.uni-passau.de/studip/api.php/user/" + userID + "/events");
+		CloseableHttpResponse r = this.get("user/" + userID + "/events");
 		HttpEntity e = r.getEntity();
 		Events events = gson.fromJson(getString(e.getContent()), Events.class);
 		EntityUtils.consume(e);
@@ -82,7 +88,7 @@ public class StudIPAPI {
 	}
 
 	public Course getCourse(String courseID) throws IOException {
-		CloseableHttpResponse r = this.sc.get("https://studip.uni-passau.de/studip/api.php/course/" + courseID);
+		CloseableHttpResponse r = this.get("course/" + courseID);
 		HttpEntity e = r.getEntity();
 		Course course = gson.fromJson(getString(e.getContent()), Course.class);
 		EntityUtils.consume(e);
@@ -91,7 +97,7 @@ public class StudIPAPI {
 	}
 
 	public Courses getCourses(String userID) throws IOException {
-		CloseableHttpResponse r = this.sc.get("https://studip.uni-passau.de/studip/api.php/user/" + userID + "/courses");
+		CloseableHttpResponse r = this.get("user/" + userID + "/courses");
 		HttpEntity e = r.getEntity();
 		Courses courses = gson.fromJson(getString(e.getContent()), Courses.class);
 		EntityUtils.consume(e);
@@ -100,7 +106,7 @@ public class StudIPAPI {
 	}
 
 	public Semesters getSemesters() throws IOException {
-		CloseableHttpResponse r = this.sc.get("https://studip.uni-passau.de/studip/api.php/semesters");
+		CloseableHttpResponse r = this.get("semesters");
 		HttpEntity e = r.getEntity();
 		Semesters semesters = gson.fromJson(getString(e.getContent()), Semesters.class);
 		EntityUtils.consume(e);
@@ -109,12 +115,30 @@ public class StudIPAPI {
 	}
 
 	public Semester getSemester(String semesterID) throws IOException {
-		CloseableHttpResponse r = this.sc.get("https://studip.uni-passau.de/studip/api.php/semester/" + semesterID);
+		CloseableHttpResponse r = this.get("semester/" + semesterID);
 		HttpEntity e = r.getEntity();
 		Semester semester = gson.fromJson(getString(e.getContent()), Semester.class);
 		EntityUtils.consume(e);
 		r.close();
 		return semester;
+	}
+
+	public Schedule getSchedule(String userID) throws IOException {
+		CloseableHttpResponse r = this.get("user/" + userID + "/schedule");
+		HttpEntity e = r.getEntity();
+		Schedule schedule = gson.fromJson(getString(e.getContent()), Schedule.class);
+		EntityUtils.consume(e);
+		r.close();
+		return schedule;
+	}
+
+	public Schedule getSchedule(String userID, String semesterID) throws IOException {
+		CloseableHttpResponse r = this.get("user/" + userID + "/schedule/" + semesterID);
+		HttpEntity e = r.getEntity();
+		Schedule schedule = gson.fromJson(getString(e.getContent()), Schedule.class);
+		EntityUtils.consume(e);
+		r.close();
+		return schedule;
 	}
 
 }
