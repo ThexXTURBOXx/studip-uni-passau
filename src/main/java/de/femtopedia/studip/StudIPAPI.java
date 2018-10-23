@@ -1,6 +1,5 @@
 package de.femtopedia.studip;
 
-import com.google.api.client.http.apache.ApacheHttpTransport;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import de.femtopedia.studip.json.Contacts;
@@ -23,29 +22,24 @@ public class StudIPAPI {
 
 	private static final String BASE_URL = "https://studip.uni-passau.de/studip/api.php/";
 	private ShibbolethClient sc;
-	private ApacheHttpTransport client;
 	private Gson gson;
 
-	public StudIPAPI(String username, String password) throws IOException, IllegalArgumentException, IllegalAccessException, IllegalStateException {
+	public StudIPAPI() {
 		this.sc = new ShibbolethClient();
-		this.sc.authenticateIfNeeded(username, password);
-		this.client = this.sc.client;
 		this.gson = new GsonBuilder().create();
 	}
 
-	public StudIPAPI(String username, String password, List<Cookie> cookies) throws IOException, IllegalArgumentException, IllegalAccessException, IllegalStateException {
-		this.sc = new ShibbolethClient(cookies);
+	public StudIPAPI(List<Cookie> cookies) {
+		this();
+		cookies.forEach(c -> this.sc.getCookieStore().addCookie(c));
+	}
+
+	public void authenticate(String username, String password) throws IOException, IllegalArgumentException, IllegalAccessException, IllegalStateException {
 		this.sc.authenticateIfNeeded(username, password);
-		this.client = this.sc.client;
-		this.gson = new GsonBuilder().create();
 	}
 
 	public ShibbolethClient getShibbolethClient() {
 		return this.sc;
-	}
-
-	public ApacheHttpTransport getClient() {
-		return this.client;
 	}
 
 	private String getString(InputStream stream) throws IOException {
@@ -117,6 +111,10 @@ public class StudIPAPI {
 		HttpResponse r = this.get("user/" + userID + "/schedule/" + semesterID);
 		HttpEntity e = r.getEntity();
 		return gson.fromJson(getString(e.getContent()), Schedule.class);
+	}
+
+	public void shutdown() {
+		this.sc.shutdown();
 	}
 
 }
