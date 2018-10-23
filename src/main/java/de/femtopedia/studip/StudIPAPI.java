@@ -14,8 +14,10 @@ import de.femtopedia.studip.json.User;
 import de.femtopedia.studip.shib.ShibbolethClient;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.cookie.Cookie;
 
 public class StudIPAPI {
 
@@ -26,7 +28,14 @@ public class StudIPAPI {
 
 	public StudIPAPI(String username, String password) throws IOException, IllegalArgumentException, IllegalAccessException, IllegalStateException {
 		this.sc = new ShibbolethClient();
-		this.sc.authenticate(username, password);
+		this.sc.authenticateIfNeeded(username, password);
+		this.client = this.sc.client;
+		this.gson = new GsonBuilder().create();
+	}
+
+	public StudIPAPI(String username, String password, List<Cookie> cookies) throws IOException, IllegalArgumentException, IllegalAccessException, IllegalStateException {
+		this.sc = new ShibbolethClient(cookies);
+		this.sc.authenticateIfNeeded(username, password);
 		this.client = this.sc.client;
 		this.gson = new GsonBuilder().create();
 	}
