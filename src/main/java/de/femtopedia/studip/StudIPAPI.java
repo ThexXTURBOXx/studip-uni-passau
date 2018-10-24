@@ -6,11 +6,12 @@ import de.femtopedia.studip.json.Contacts;
 import de.femtopedia.studip.json.Course;
 import de.femtopedia.studip.json.Courses;
 import de.femtopedia.studip.json.Events;
-import de.femtopedia.studip.json.Schedule;
 import de.femtopedia.studip.json.Semester;
 import de.femtopedia.studip.json.Semesters;
 import de.femtopedia.studip.json.User;
 import de.femtopedia.studip.shib.ShibbolethClient;
+import de.femtopedia.studip.util.Schedule;
+import de.femtopedia.studip.util.ScheduleHelper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -89,13 +90,17 @@ public class StudIPAPI {
 		return this.getData("semester/" + semesterID, Semester.class);
 	}
 
-	public Schedule getSchedule(String userID) throws IOException, IllegalAccessException {
+	public Schedule getSchedule() throws IOException, IllegalAccessException {
+		return ScheduleHelper.getData(this);
+	}
+
+	/*public Schedule getSchedule(String userID) throws IOException, IllegalAccessException {
 		return this.getData("user/" + userID + "/schedule", Schedule.class);
 	}
 
 	public Schedule getSchedule(String userID, String semesterID) throws IOException, IllegalAccessException {
 		return this.getData("user/" + userID + "/schedule/" + semesterID, Schedule.class);
-	}
+	}*/
 
 	public void shutdown() {
 		this.sc.shutdown();
