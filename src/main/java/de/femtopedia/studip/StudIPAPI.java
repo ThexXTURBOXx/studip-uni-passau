@@ -14,7 +14,6 @@ import de.femtopedia.studip.shib.ShibbolethClient;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.cookie.Cookie;
 
@@ -49,68 +48,53 @@ public class StudIPAPI {
 		return result.toString();
 	}
 
-	public HttpResponse get(String url) throws IOException {
-		return this.sc.get(BASE_URL + url);
+	public HttpResponse get(String url) throws IOException, IllegalAccessException {
+		return this.sc.getIfValid(BASE_URL + url);
 	}
 
-	public User getCurrentUserData() throws IOException {
-		HttpResponse r = this.get("user");
-		HttpEntity e = r.getEntity();
-		return gson.fromJson(getString(e.getContent()), User.class);
+	public <T> T getData(String api_url, Class<T> obj_class) throws IOException, IllegalAccessException {
+		HttpResponse r = this.get(api_url);
+		return gson.fromJson(getString(r.getEntity().getContent()), obj_class);
 	}
 
-	public User getUserData(String userID) throws IOException {
-		HttpResponse r = this.get("user/" + userID);
-		HttpEntity e = r.getEntity();
-		return gson.fromJson(getString(e.getContent()), User.class);
+	public User getCurrentUserData() throws IOException, IllegalAccessException {
+		return this.getData("user", User.class);
 	}
 
-	public Contacts getContacts(String userID) throws IOException {
-		HttpResponse r = this.get("user/" + userID + "/contacts");
-		HttpEntity e = r.getEntity();
-		return gson.fromJson(getString(e.getContent()), Contacts.class);
+	public User getUserData(String userID) throws IOException, IllegalAccessException {
+		return this.getData("user/" + userID, User.class);
 	}
 
-	public Events getEvents(String userID) throws IOException {
-		HttpResponse r = this.get("user/" + userID + "/events");
-		HttpEntity e = r.getEntity();
-		return gson.fromJson(getString(e.getContent()), Events.class);
+	public Contacts getContacts(String userID) throws IOException, IllegalAccessException {
+		return this.getData("user/" + userID + "/contacts", Contacts.class);
 	}
 
-	public Course getCourse(String courseID) throws IOException {
-		HttpResponse r = this.get("course/" + courseID);
-		HttpEntity e = r.getEntity();
-		return gson.fromJson(getString(e.getContent()), Course.class);
+	public Events getEvents(String userID) throws IOException, IllegalAccessException {
+		return this.getData("user/" + userID + "/events", Events.class);
 	}
 
-	public Courses getCourses(String userID) throws IOException {
-		HttpResponse r = this.get("user/" + userID + "/courses");
-		HttpEntity e = r.getEntity();
-		return gson.fromJson(getString(e.getContent()), Courses.class);
+	public Course getCourse(String courseID) throws IOException, IllegalAccessException {
+		return this.getData("course/" + courseID, Course.class);
 	}
 
-	public Semesters getSemesters() throws IOException {
-		HttpResponse r = this.get("semesters");
-		HttpEntity e = r.getEntity();
-		return gson.fromJson(getString(e.getContent()), Semesters.class);
+	public Courses getCourses(String userID) throws IOException, IllegalAccessException {
+		return this.getData("user/" + userID + "/courses", Courses.class);
 	}
 
-	public Semester getSemester(String semesterID) throws IOException {
-		HttpResponse r = this.get("semester/" + semesterID);
-		HttpEntity e = r.getEntity();
-		return gson.fromJson(getString(e.getContent()), Semester.class);
+	public Semesters getSemesters() throws IOException, IllegalAccessException {
+		return this.getData("semesters", Semesters.class);
 	}
 
-	public Schedule getSchedule(String userID) throws IOException {
-		HttpResponse r = this.get("user/" + userID + "/schedule");
-		HttpEntity e = r.getEntity();
-		return gson.fromJson(getString(e.getContent()), Schedule.class);
+	public Semester getSemester(String semesterID) throws IOException, IllegalAccessException {
+		return this.getData("semester/" + semesterID, Semester.class);
 	}
 
-	public Schedule getSchedule(String userID, String semesterID) throws IOException {
-		HttpResponse r = this.get("user/" + userID + "/schedule/" + semesterID);
-		HttpEntity e = r.getEntity();
-		return gson.fromJson(getString(e.getContent()), Schedule.class);
+	public Schedule getSchedule(String userID) throws IOException, IllegalAccessException {
+		return this.getData("user/" + userID + "/schedule", Schedule.class);
+	}
+
+	public Schedule getSchedule(String userID, String semesterID) throws IOException, IllegalAccessException {
+		return this.getData("user/" + userID + "/schedule/" + semesterID, Schedule.class);
 	}
 
 	public void shutdown() {
