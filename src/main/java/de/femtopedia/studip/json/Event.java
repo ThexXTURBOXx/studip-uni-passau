@@ -15,6 +15,6 @@ public class Event {
 	private String description;
 	private String categories;
 	private String room;
-	private boolean canceled;
+	private String canceled;
 
 }
