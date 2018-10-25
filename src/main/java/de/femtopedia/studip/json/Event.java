@@ -9,8 +9,8 @@ public class Event {
 
 	private String event_id;
 	private String course;
-	private int start;
-	private int end;
+	private long start;
+	private long end;
 	private String title;
 	private String description;
 	private String categories;

@@ -1,6 +1,5 @@
 package de.femtopedia.studip.util;
 
-import java.awt.Color;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -15,6 +14,6 @@ public class ScheduledCourse {
 	int end;
 	String title;
 	String content;
-	Color color;
+	String color;
 
 }

@@ -10,9 +10,9 @@ public class Semester {
 	private String id;
 	private String title;
 	private String description;
-	private int begin;
-	private int end;
-	private int seminars_begin;
-	private int seminars_end;
+	private long begin;
+	private long end;
+	private long seminars_begin;
+	private long seminars_end;
 
 }

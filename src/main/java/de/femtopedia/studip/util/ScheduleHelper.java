@@ -2,7 +2,6 @@ package de.femtopedia.studip.util;
 
 import de.femtopedia.studip.StudIPAPI;
 import de.femtopedia.studip.shib.ShibbolethClient;
-import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,7 +39,7 @@ public class ScheduleHelper {
 					course.event_id = line.substring(io, io + 32);
 				} else if (line.contains("<dt style=\"background-color: #")) {
 					int io = line.indexOf("<dt style=\"background-color: #") + 30;
-					course.color = Color.decode("0x" + line.substring(io, io + 6));
+					course.color = line.substring(io, io + 6);
 					flag = true;
 				} else if (flag) {
 					String[] split = line.split(", <b>");
