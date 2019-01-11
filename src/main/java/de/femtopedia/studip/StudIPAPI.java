@@ -31,7 +31,8 @@ public class StudIPAPI {
 
 	public StudIPAPI(List<Cookie> cookies) {
 		this();
-		cookies.forEach(c -> this.sc.getCookieStore().addCookie(c));
+		for (Cookie c : cookies)
+			this.sc.getCookieStore().addCookie(c);
 	}
 
 	public void authenticate(String username, String password) throws IOException, IllegalArgumentException, IllegalAccessException, IllegalStateException {
