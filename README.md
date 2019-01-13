@@ -2,7 +2,7 @@
 <p align="center">
   <a target="_blank" href="https://travis-ci.org/ThexXTURBOXx/studip-lib-uni-passau"><img src="https://travis-ci.org/ThexXTURBOXx/studip-lib-uni-passau.svg?branch=master"></a>
   <a target="_blank" href="http://femtopedia.de/studip/index.php"><img src="https://img.shields.io/website-up-down-green-red/http/www.femtopedia.de/index.php.svg?label=Repository"></a>
-  <a target="_blank" href="https://github.com/ThexXTURBOXx/studip-lib-uni-passau/tags"><img src="https://img.shields.io/github/tag/thexxturboxx/studip-lib-uni-passau.svg"></a>
+  <a target="_blank" href="https://github.com/ThexXTURBOXx/studip-lib-uni-passau/releases"><img src="https://img.shields.io/github/release/thexxturboxx/studip-lib-uni-passau.svg"></a>
 </p>
 <p>This is a simple library for Java handling the RestAPI of StudIP at the University Passau, using the <a target="_blank" href="https://github.com/ThexXTURBOXx/shib-uni-passau">Shibboleth Client Wrapper</a>.</p>
 
