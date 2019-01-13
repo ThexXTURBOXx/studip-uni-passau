@@ -6,11 +6,11 @@
 </p>
 <p>This is a simple library for Java handling the RestAPI of StudIP at the University Passau, using the <a target="_blank" href="https://github.com/ThexXTURBOXx/shib-uni-passau">Shibboleth Client Wrapper</a>.</p>
 
-# Sample Project
+## Sample Project
 There is a [Repository available](https://github.com/ThexXTURBOXx/studip-app-uni-passau), including source code.<br>
 And of course its [release APK](http://femtopedia.de/studip/index.php).
 
-# Including as dependency (Gradle)
+## Including as dependency (Gradle)
 Add the following snippet to your **build.gradle**:
 ```Gradle
 repositories {
@@ -23,7 +23,7 @@ dependencies {
 }
 ```
 
-# Including as dependency (Maven)
+## Including as dependency (Maven)
 Add the following snippet to your **pom.xml**:
 ```xml
 <repositories>
@@ -41,7 +41,7 @@ Add the following snippet to your **pom.xml**:
 </dependencies>
 ```
 
-# Basic Usage
+## Basic Usage
 ```Java
 //Instantiate the API
 StudIPAPI api = new StudIPAPI();
