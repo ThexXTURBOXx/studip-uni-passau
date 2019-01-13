@@ -9,13 +9,13 @@ import de.femtopedia.studip.json.Events;
 import de.femtopedia.studip.json.Semester;
 import de.femtopedia.studip.json.Semesters;
 import de.femtopedia.studip.json.User;
+import de.femtopedia.studip.shib.ShibHttpResponse;
 import de.femtopedia.studip.shib.ShibbolethClient;
 import de.femtopedia.studip.util.Schedule;
 import de.femtopedia.studip.util.ScheduleHelper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import org.apache.http.HttpResponse;
 import org.apache.http.cookie.Cookie;
 
 public class StudIPAPI {
@@ -47,16 +47,21 @@ public class StudIPAPI {
 		StringBuilder result = new StringBuilder();
 		for (String line : ShibbolethClient.readLines(stream))
 			result.append(line);
+		stream.close();
 		return result.toString();
 	}
 
-	public HttpResponse get(String url) throws IOException, IllegalAccessException {
+	public ShibHttpResponse get(String url) throws IOException, IllegalAccessException {
 		return this.sc.getIfValid(BASE_URL + url);
 	}
 
 	public <T> T getData(String api_url, Class<T> obj_class) throws IOException, IllegalAccessException {
-		HttpResponse r = this.get(api_url);
-		return gson.fromJson(getString(r.getEntity().getContent()), obj_class);
+		ShibHttpResponse r = this.get(api_url);
+		try {
+			return gson.fromJson(getString(r.getResponse().getEntity().getContent()), obj_class);
+		} finally {
+			r.close();
+		}
 	}
 
 	public User getCurrentUserData() throws IOException, IllegalAccessException {
