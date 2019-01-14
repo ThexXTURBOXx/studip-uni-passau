@@ -13,7 +13,7 @@ public class ScheduleHelper {
 
 	public static Schedule getData(StudIPAPI api) throws IllegalAccessException, IOException {
 		Schedule schedule = new Schedule();
-		ShibHttpResponse response = api.getShibbolethClient().getIfValid("https://studip.uni-passau.de/studip/dispatch.php/calendar/schedule");
+		ShibHttpResponse response = api.getShibbolethClient().get("https://studip.uni-passau.de/studip/dispatch.php/calendar/schedule");
 		try {
 			int day = -1;
 			List<List<ScheduledCourse>> courses = new ArrayList<>(Collections.nCopies(7, null));

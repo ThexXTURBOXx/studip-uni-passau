@@ -36,7 +36,7 @@ public class StudIPAPI {
 	}
 
 	public void authenticate(String username, String password) throws IOException, IllegalArgumentException, IllegalAccessException, IllegalStateException {
-		this.sc.authenticateIfNeeded(username, password);
+		this.sc.authenticate(username, password);
 	}
 
 	public ShibbolethClient getShibbolethClient() {
@@ -52,7 +52,7 @@ public class StudIPAPI {
 	}
 
 	public ShibHttpResponse get(String url) throws IOException, IllegalAccessException {
-		return this.sc.getIfValid(BASE_URL + url);
+		return this.sc.get(BASE_URL + url);
 	}
 
 	public <T> T getData(String api_url, Class<T> obj_class) throws IOException, IllegalAccessException {
