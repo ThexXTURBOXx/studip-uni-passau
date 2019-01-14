@@ -11,7 +11,7 @@
 
     <groupId>de.femtopedia.studip</groupId>
     <artifactId>studip-uni-passau</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
 
     <repositories>
         <repository>
@@ -24,7 +24,7 @@
         <dependency>
             <groupId>de.femtopedia.studip</groupId>
             <artifactId>shib-uni-passau</artifactId>
-            <version>1.0</version>
+            <version>1.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -40,6 +40,13 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>femtopedia</id>
+            <url>ftp://alfa3211.alfahosting-server.de/html/maven</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>
@@ -58,6 +65,12 @@
                 <version>1.18.2.0</version>
             </plugin>
         </plugins>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ftp</artifactId>
+            </extension>
+        </extensions>
     </build>
 
 </project>
