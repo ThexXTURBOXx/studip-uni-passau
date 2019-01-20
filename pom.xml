@@ -11,7 +11,7 @@
 
     <groupId>de.femtopedia.studip</groupId>
     <artifactId>studip-uni-passau</artifactId>
-    <version>1.1</version>
+    <version>1.1.1</version>
 
     <repositories>
         <repository>

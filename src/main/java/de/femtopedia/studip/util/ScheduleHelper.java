@@ -40,11 +40,11 @@ public class ScheduleHelper {
 						course = new ScheduledCourse();
 						int io = line.indexOf("schedule_entry_") + 48;
 						course.event_id = line.substring(io, io + 32);
-					} else if (line.contains("<dt style=\"background-color: #")) {
+					} else if (line.contains("<dt style=\"background-color: #") && course != null) {
 						int io = line.indexOf("<dt style=\"background-color: #") + 30;
 						course.color = line.substring(io, io + 6);
 						flag = true;
-					} else if (flag) {
+					} else if (flag && course != null) {
 						String[] split = line.split(", <b>");
 						int io = indexOfAnyButSpaces(split[0]);
 						String[] clock = split[0].substring(io).split(" - ");
@@ -57,7 +57,7 @@ public class ScheduleHelper {
 					} else if (flag1 != -1) {
 						if (flag1 != 1) {
 							flag1++;
-						} else {
+						} else if (course != null) {
 							int io = indexOfAnyButSpaces(line);
 							course.content = line.substring(io, line.lastIndexOf("<br>"));
 							flag1 = -1;
