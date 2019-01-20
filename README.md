@@ -21,7 +21,7 @@ repositories {
     }
 }
 dependencies {
-    implementation 'de.femtopedia.studip:studip-lib-uni-passau:1.1'
+    implementation 'de.femtopedia.studip:studip-lib-uni-passau:1.1.1'
 }
 ```
 
@@ -38,7 +38,7 @@ Add the following snippet to your **pom.xml**:
     <dependency>
         <groupId>de.femtopedia.studip</groupId>
         <artifactId>studip-lib-uni-passau</artifactId>
-        <version>1.1</version>
+        <version>1.1.1</version>
     </dependency>
 </dependencies>
 ```
