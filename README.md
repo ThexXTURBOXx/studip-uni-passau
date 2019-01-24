@@ -1,10 +1,10 @@
 # Stud.IP API - Uni Passau
 <p align="center">
-  <a href="https://lgtm.com/projects/g/ThexXTURBOXx/studip-lib-uni-passau/alerts/"><img alt="Total alerts" src="https://img.shields.io/lgtm/alerts/g/ThexXTURBOXx/studip-lib-uni-passau.svg?logo=lgtm&logoWidth=18"/></a>
-  <a href="https://lgtm.com/projects/g/ThexXTURBOXx/studip-lib-uni-passau/context:java"><img alt="Language grade: Java" src="https://img.shields.io/lgtm/grade/java/g/ThexXTURBOXx/studip-lib-uni-passau.svg?logo=lgtm&logoWidth=18"/></a>
-  <a href="https://travis-ci.org/ThexXTURBOXx/studip-lib-uni-passau"><img src="https://travis-ci.org/ThexXTURBOXx/studip-lib-uni-passau.svg?branch=master"></a>
+  <a href="https://lgtm.com/projects/g/ThexXTURBOXx/studip-uni-passau/alerts/"><img alt="Total alerts" src="https://img.shields.io/lgtm/alerts/g/ThexXTURBOXx/studip-uni-passau.svg?logo=lgtm&logoWidth=18"/></a>
+  <a href="https://lgtm.com/projects/g/ThexXTURBOXx/studip-uni-passau/context:java"><img alt="Language grade: Java" src="https://img.shields.io/lgtm/grade/java/g/ThexXTURBOXx/studip-uni-passau.svg?logo=lgtm&logoWidth=18"/></a>
+  <a href="https://travis-ci.com/ThexXTURBOXx/studip-uni-passau"><img src="https://travis-ci.com/ThexXTURBOXx/studip-uni-passau.svg?branch=master"></a>
   <a href="http://femtopedia.de/studip/index.php"><img src="https://img.shields.io/website-up-down-green-red/http/www.femtopedia.de/index.php.svg?label=Repository"></a>
-  <a href="https://github.com/ThexXTURBOXx/studip-lib-uni-passau/releases"><img src="https://img.shields.io/github/release/thexxturboxx/studip-lib-uni-passau.svg"></a>
+  <a href="https://github.com/ThexXTURBOXx/studip-uni-passau/releases"><img src="https://img.shields.io/github/release/thexxturboxx/studip-uni-passau.svg"></a>
 </p>
 <p>This is a simple library for Java handling the RestAPI of StudIP at the University Passau, using the <a target="_blank" href="https://github.com/ThexXTURBOXx/shib-uni-passau">Shibboleth Client Wrapper</a>.</p>
 
@@ -21,7 +21,7 @@ repositories {
     }
 }
 dependencies {
-    implementation 'de.femtopedia.studip:studip-lib-uni-passau:1.1.1'
+    implementation 'de.femtopedia.studip:studip-uni-passau:1.1.1'
 }
 ```
 
@@ -37,7 +37,7 @@ Add the following snippet to your **pom.xml**:
 <dependencies>
     <dependency>
         <groupId>de.femtopedia.studip</groupId>
-        <artifactId>studip-lib-uni-passau</artifactId>
+        <artifactId>studip-uni-passau</artifactId>
         <version>1.1.1</version>
     </dependency>
 </dependencies>
