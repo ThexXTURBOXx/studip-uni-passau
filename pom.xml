@@ -12,7 +12,7 @@
 
     <groupId>de.femtopedia.studip</groupId>
     <artifactId>studip-uni-passau</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2</version>
 
     <repositories>
         <repository>
@@ -25,7 +25,7 @@
         <dependency>
             <groupId>de.femtopedia.studip</groupId>
             <artifactId>shib-uni-passau</artifactId>
-            <version>1.2-SNAPSHOT</version>
+            <version>1.2</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
