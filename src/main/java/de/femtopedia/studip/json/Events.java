@@ -4,6 +4,10 @@ import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * A class representing a set of Events.
+ */
+@SuppressWarnings("MemberName")
 @NoArgsConstructor
 @Getter
 public class Events {

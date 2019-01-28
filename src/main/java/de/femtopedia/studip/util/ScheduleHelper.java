@@ -9,9 +9,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * A helper class to parse the HTML of the schedule.
+ */
 public class ScheduleHelper {
 
-	public static Schedule getData(StudIPAPI api) throws IllegalAccessException, IOException {
+	/**
+	 * Helper method to parse the HTML of the schedule.
+	 * THIS METHOD WILL GET REMOVED, WHEN THE RESTAPI SCHEDULE IS FIXED.
+	 * THIS IS A TEMPORARY METHOD, THAT HARDCODED PARSES THE HTML TEXT.
+	 * IT'S VERY UNSAFE AND CAN BREAK EASILY!!!
+	 *
+	 * @param api The {@link StudIPAPI} to use.
+	 * @return the parsed and converted {@link Schedule} object
+	 * @throws IOException              if reading errors occur
+	 * @throws IllegalArgumentException if the header values are broken
+	 * @throws IllegalAccessException   if the session isn't valid
+	 */
+	public static Schedule getData(StudIPAPI api) throws IllegalAccessException, IllegalArgumentException, IOException {
 		Schedule schedule = new Schedule();
 		ShibHttpResponse response = api.getShibbolethClient().get("https://studip.uni-passau.de/studip/dispatch.php/calendar/schedule");
 		try {
@@ -86,6 +101,14 @@ public class ScheduleHelper {
 		}
 	}
 
+	/**
+	 * Helper method to get the index of the first char
+	 * in a String, that's not a space.
+	 *
+	 * @param str The string to check
+	 * @return the index of the first char
+	 * in the String, that's not a space or -1.
+	 */
 	private static int indexOfAnyButSpaces(String str) {
 		if (isEmpty(str)) {
 			return -1;
@@ -98,6 +121,12 @@ public class ScheduleHelper {
 		return -1;
 	}
 
+	/**
+	 * Checks, if a String is empty.
+	 *
+	 * @param str The String to check
+	 * @return whether the String should be treated as "empty".
+	 */
 	private static boolean isEmpty(String str) {
 		return str == null || str.length() == 0;
 	}

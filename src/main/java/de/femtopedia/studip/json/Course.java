@@ -4,6 +4,10 @@ import java.util.Map;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * A class representing a Course.
+ */
+@SuppressWarnings("MemberName")
 @NoArgsConstructor
 @Getter
 public class Course {

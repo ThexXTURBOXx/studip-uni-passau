@@ -3,6 +3,10 @@ package de.femtopedia.studip.json;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * A class representing Links.
+ */
+@SuppressWarnings("MemberName")
 @NoArgsConstructor
 @Getter
 public class Links {

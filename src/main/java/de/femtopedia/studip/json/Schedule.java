@@ -5,6 +5,10 @@ import java.util.Map;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * A class representing a Schedule.
+ */
+@SuppressWarnings("MemberName")
 @NoArgsConstructor
 @Getter
 public class Schedule {
