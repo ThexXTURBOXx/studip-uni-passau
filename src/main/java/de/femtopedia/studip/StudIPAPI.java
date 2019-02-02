@@ -31,17 +31,29 @@ public class StudIPAPI {
 	 * Initializes a new {@link StudIPAPI} instance.
 	 */
 	public StudIPAPI() {
-		this.sc = new ShibbolethClient();
+		this(null, "");
+	}
+
+	/**
+	 * Initializes a new {@link StudIPAPI} instance.
+	 *
+	 * @param keyStore A custom KeyStore as {@link InputStream} to set or null
+	 * @param password The KeyStore's password
+	 */
+	public StudIPAPI(InputStream keyStore, String password) {
+		this.sc = new ShibbolethClient(keyStore, password);
 		this.gson = new GsonBuilder().create();
 	}
 
 	/**
 	 * Initializes a new {@link StudIPAPI} instance with cookies.
 	 *
-	 * @param cookies the cookies to load into the Cookie Store
+	 * @param cookies  the cookies to load into the Cookie Store
+	 * @param keyStore A custom KeyStore as {@link InputStream} to set or null
+	 * @param password The KeyStore's password
 	 */
-	public StudIPAPI(List<Cookie> cookies) {
-		this();
+	public StudIPAPI(List<Cookie> cookies, InputStream keyStore, String password) {
+		this(keyStore, password);
 		for (Cookie c : cookies)
 			this.sc.getCookieStore().addCookie(c);
 	}
