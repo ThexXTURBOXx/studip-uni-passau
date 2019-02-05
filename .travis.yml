@@ -1,7 +1,6 @@
 language: java
 sudo: false
 
-before_script:
-  - mvn compile checkstyle:check -Dcheckstyle.config.location=http://femtopedia.de/checkstyle.xml
+before_script: mvn compile checkstyle:check -Dcheckstyle.config.location=http://femtopedia.de/checkstyle.xml
 
 script: mvn clean install -U
