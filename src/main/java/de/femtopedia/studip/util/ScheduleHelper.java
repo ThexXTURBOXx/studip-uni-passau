@@ -1,13 +1,14 @@
 package de.femtopedia.studip.util;
 
 import de.femtopedia.studip.StudIPAPI;
-import de.femtopedia.studip.shib.ShibHttpResponse;
-import de.femtopedia.studip.shib.ShibbolethClient;
+import de.femtopedia.studip.shib.CustomAccessHttpResponse;
+import de.femtopedia.studip.shib.OAuthClient;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import oauth.signpost.exception.OAuthException;
 
 /**
  * A helper class to parse the HTML of the schedule.
@@ -25,10 +26,12 @@ public class ScheduleHelper {
 	 * @throws IOException              if reading errors occur
 	 * @throws IllegalArgumentException if the header values are broken
 	 * @throws IllegalAccessException   if the session isn't valid
+	 * @throws OAuthException           if any OAuth errors occur
 	 */
-	public static Schedule getData(StudIPAPI api) throws IllegalAccessException, IllegalArgumentException, IOException {
+	public static Schedule getData(StudIPAPI api)
+			throws IllegalAccessException, IllegalArgumentException, IOException, OAuthException {
 		Schedule schedule = new Schedule();
-		ShibHttpResponse response = api.getShibbolethClient().get("https://studip.uni-passau.de/studip/dispatch.php/calendar/schedule");
+		CustomAccessHttpResponse response = api.getOAuthClient().get("https://studip.uni-passau.de/studip/dispatch.php/calendar/schedule");
 		try {
 			int day = -1;
 			List<List<ScheduledCourse>> courses = new ArrayList<>(Collections.nCopies(7, null));
@@ -37,7 +40,7 @@ public class ScheduleHelper {
 			boolean flag = false;
 			int flag1 = -1;
 			InputStream stream = response.getResponse().getEntity().getContent();
-			for (String line : ShibbolethClient.readLines(stream)) {
+			for (String line : OAuthClient.readLines(stream)) {
 				if (day == -1) {
 					if (line.contains("calendar_view_1_column_0"))
 						day = 0;
