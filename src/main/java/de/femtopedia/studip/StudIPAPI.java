@@ -27,7 +27,7 @@ public class StudIPAPI {
 	private Gson gson;
 
 	/**
-	 * Initializes a new {@link StudIPAPI} instance with cookies.
+	 * Initializes a new default {@link StudIPAPI} instance.
 	 *
 	 * @param consumerKey    The Consumer Key to use
 	 * @param consumerSecret The Consumer Secret to use
@@ -37,7 +37,7 @@ public class StudIPAPI {
 	}
 
 	/**
-	 * Initializes a new {@link StudIPAPI} instance with cookies and a custom KeyStore.
+	 * Initializes a new {@link StudIPAPI} instance with a custom KeyStore.
 	 *
 	 * @param consumerKey    The Consumer Key to use
 	 * @param consumerSecret The Consumer Secret to use
@@ -65,7 +65,7 @@ public class StudIPAPI {
 
 	/**
 	 * Retrieves a working Access Token and saves it.
-	 * This is the third function to call in the OAuth process (call {@link StudIPAPI#getAuthorizationUrl(String)}
+	 * This is the second function to call in the OAuth process (call {@link StudIPAPI#getAuthorizationUrl(String)}
 	 * first and authorize in a browser).
 	 *
 	 * @param verifyToken The Verification Code from the Authorization process.
@@ -87,7 +87,7 @@ public class StudIPAPI {
 	/**
 	 * Returns, whether the current session is valid or you need to re-login.
 	 *
-	 * @return true if and only if the current session cookies are valid
+	 * @return true if and only if the current session is valid
 	 * @throws IOException    if reading errors occur
 	 * @throws OAuthException if any OAuth errors occur
 	 */

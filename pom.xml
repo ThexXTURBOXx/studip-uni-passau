@@ -43,7 +43,7 @@
         <dependency>
             <groupId>de.femtopedia.studip</groupId>
             <artifactId>shib-uni-passau</artifactId>
-            <version>1.4</version>
+            <version>1.4.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
