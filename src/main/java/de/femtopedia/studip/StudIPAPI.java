@@ -127,6 +127,10 @@ public class StudIPAPI {
 		CustomAccessHttpResponse response = null;
 		try {
 			response = this.get(apiUrl);
+			//Need to hardcode, because server returns 200 anyway
+			if (!response.getResponse().getEntity().getContentType()
+					.toString().contains("json"))
+				throw new IllegalAccessException("Session is not valid!");
 			return gson.fromJson(response.readLine(), objClass);
 		} finally {
 			if (response != null)
