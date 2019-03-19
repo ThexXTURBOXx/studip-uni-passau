@@ -41,22 +41,21 @@ Older builds are available in my Maven repo here: [http://femtopedia.de/maven](h
 
 ## Basic Usage
 ```Java
-//Instantiate the API
-StudIPAPI api = new StudIPAPI();
+//Instantiate the API and set OAuth Credentials
+StudIPAPI api = new StudIPAPI("CONSUMER_KEY", "CONSUMER_SECRET");
 try {
-    //Authenticate using your Username and Password
-    api.authenticate("USERNAME", "PASSWORD");
+    //Print Authorization Url
+    System.out.println(api.getAuthorizationUrl("callback_scheme://callback_url"));
+    //Wait for user to input Verification Code
+    api.verifyAccess(new Scanner(System.in).nextLine());
     //Get the user data of the current logged in user
     User user = api.getCurrentUserData();
     //Print the user's Family Name
     System.out.println(user.getName().getFamily());
     //Print the user's Email Adress
     System.out.println(user.getEmail());
-} catch (IOException | IllegalAccessException e) {
+} catch (IOException | IllegalAccessException | OAuthException e) {
     //Print errors
     e.printStackTrace();
-} finally {
-    //Shutdown the API
-    api.shutdown();
 }
 ```
