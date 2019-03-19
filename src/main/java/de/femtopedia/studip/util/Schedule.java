@@ -3,6 +3,7 @@ package de.femtopedia.studip.util;
 import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * A class representing a Schedule.
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @SuppressWarnings("MemberName")
 @NoArgsConstructor
 @Getter
+@ToString
 public class Schedule {
 
 	List<ScheduledCourse> monday;

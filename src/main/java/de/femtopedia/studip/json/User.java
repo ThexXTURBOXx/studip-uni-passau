@@ -3,6 +3,7 @@ package de.femtopedia.studip.json;
 import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * A class representing a User.
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @SuppressWarnings("MemberName")
 @NoArgsConstructor
 @Getter
+@ToString
 public class User {
 
 	private String user_id;

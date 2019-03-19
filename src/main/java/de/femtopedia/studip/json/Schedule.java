@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Map;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * A class representing a Schedule.
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @SuppressWarnings("MemberName")
 @NoArgsConstructor
 @Getter
+@ToString
 public class Schedule {
 
 	@SerializedName("1")

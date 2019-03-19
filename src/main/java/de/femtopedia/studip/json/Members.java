@@ -2,6 +2,7 @@ package de.femtopedia.studip.json;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * A class representing Members.
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 @SuppressWarnings("MemberName")
 @NoArgsConstructor
 @Getter
+@ToString
 public class Members {
 
 	private String user;

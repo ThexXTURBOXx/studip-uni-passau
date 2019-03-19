@@ -14,7 +14,6 @@ import de.femtopedia.studip.shib.CustomAccessHttpResponse;
 import de.femtopedia.studip.shib.OAuthClient;
 import de.femtopedia.studip.util.ScheduleHelper;
 import java.io.IOException;
-import java.io.InputStream;
 import oauth.signpost.exception.OAuthException;
 
 /**
@@ -27,25 +26,13 @@ public class StudIPAPI {
 	private Gson gson;
 
 	/**
-	 * Initializes a new default {@link StudIPAPI} instance.
+	 * Initializes a new {@link StudIPAPI} instance.
 	 *
 	 * @param consumerKey    The Consumer Key to use
 	 * @param consumerSecret The Consumer Secret to use
 	 */
 	public StudIPAPI(String consumerKey, String consumerSecret) {
-		this(consumerKey, consumerSecret, null, "");
-	}
-
-	/**
-	 * Initializes a new {@link StudIPAPI} instance with a custom KeyStore.
-	 *
-	 * @param consumerKey    The Consumer Key to use
-	 * @param consumerSecret The Consumer Secret to use
-	 * @param keyStore       A custom KeyStore as {@link InputStream} to set or null
-	 * @param password       The KeyStore's password
-	 */
-	public StudIPAPI(String consumerKey, String consumerSecret, InputStream keyStore, String password) {
-		this.oAuthClient = new OAuthClient(keyStore, password);
+		this.oAuthClient = new OAuthClient();
 		this.oAuthClient.setupOAuth(consumerKey, consumerSecret);
 		this.gson = new GsonBuilder().create();
 	}
@@ -128,8 +115,7 @@ public class StudIPAPI {
 		try {
 			response = this.get(apiUrl);
 			//Need to hardcode, because server returns 200 anyway
-			if (!response.getResponse().getEntity().getContentType()
-					.toString().contains("json"))
+			if (!response.getResponse().body().contentType().subtype().equals("json"))
 				throw new IllegalAccessException("Session is not valid!");
 			return gson.fromJson(response.readLine(), objClass);
 		} finally {
@@ -306,13 +292,6 @@ public class StudIPAPI {
 	public Schedule getSchedule(String userID, String semesterID)
 			throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
 		return this.getData("user/" + userID + "/schedule/" + semesterID, Schedule.class);
-	}
-
-	/**
-	 * Shuts down the {@link OAuthClient}.
-	 */
-	public void shutdown() {
-		this.oAuthClient.shutdown();
 	}
 
 }

@@ -10,7 +10,7 @@
 
     <groupId>de.femtopedia.studip</groupId>
     <artifactId>studip-uni-passau</artifactId>
-    <version>1.4.3-SNAPSHOT</version>
+    <version>1.5-SNAPSHOT</version>
     <name>StudIP-Library-Uni-Passau</name>
     <description>A simple wrapper around the StudIP RestAPI from Uni Passau</description>
     <url>https://github.com/ThexXTURBOXx/studip-uni-passau</url>
@@ -43,7 +43,7 @@
         <dependency>
             <groupId>de.femtopedia.studip</groupId>
             <artifactId>shib-uni-passau</artifactId>
-            <version>1.4.2</version>
+            <version>1.5</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -55,7 +55,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.4</version>
+            <version>1.18.6</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

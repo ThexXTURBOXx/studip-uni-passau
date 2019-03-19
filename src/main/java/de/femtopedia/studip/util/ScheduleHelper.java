@@ -39,7 +39,7 @@ public class ScheduleHelper {
 			ScheduledCourse course = null;
 			boolean flag = false;
 			int flag1 = -1;
-			InputStream stream = response.getResponse().getEntity().getContent();
+			InputStream stream = response.getResponse().body().byteStream();
 			for (String line : OAuthClient.readLines(stream)) {
 				if (day == -1) {
 					if (line.contains("calendar_view_1_column_0"))
