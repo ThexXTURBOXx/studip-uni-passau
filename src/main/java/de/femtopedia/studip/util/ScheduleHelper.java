@@ -12,14 +12,14 @@ import oauth.signpost.exception.OAuthException;
 
 /**
  * A helper class to parse the HTML of the schedule.
+ *
+ * @deprecated This was only a temporary solution to an API problem.
  */
+@Deprecated
 public class ScheduleHelper {
 
 	/**
 	 * Helper method to parse the HTML of the schedule.
-	 * THIS METHOD WILL GET REMOVED, WHEN THE RESTAPI SCHEDULE IS FIXED.
-	 * THIS IS A TEMPORARY METHOD, THAT HARDCODED PARSES THE HTML TEXT.
-	 * IT'S VERY UNSAFE AND CAN BREAK EASILY!!!
 	 *
 	 * @param api The {@link StudIPAPI} to use.
 	 * @return the parsed and converted {@link Schedule} object
@@ -27,7 +27,10 @@ public class ScheduleHelper {
 	 * @throws IllegalArgumentException if the header values are broken
 	 * @throws IllegalAccessException   if the session isn't valid
 	 * @throws OAuthException           if any OAuth errors occur
+	 * @deprecated use {@link StudIPAPI#getSchedule(String)} or {@link StudIPAPI#getSchedule(String, String)}
+	 * instead. This was only a temporary solution to an API problem.
 	 */
+	@Deprecated
 	public static Schedule getData(StudIPAPI api)
 			throws IllegalAccessException, IllegalArgumentException, IOException, OAuthException {
 		Schedule schedule = new Schedule();

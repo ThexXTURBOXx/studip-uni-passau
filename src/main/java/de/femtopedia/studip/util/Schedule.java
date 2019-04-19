@@ -7,9 +7,11 @@ import lombok.ToString;
 
 /**
  * A class representing a Schedule.
- * TEMPORARY UNTIL THE STUDIP RESTAPI IS FIXED!
+ *
+ * @deprecated This was only a temporary solution to an API problem.
  */
 @SuppressWarnings("MemberName")
+@Deprecated
 @NoArgsConstructor
 @Getter
 @ToString

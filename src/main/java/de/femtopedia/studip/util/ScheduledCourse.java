@@ -6,12 +6,14 @@ import lombok.ToString;
 
 /**
  * A class representing a ScheduledCourse.
- * TEMPORARY UNTIL THE STUDIP RESTAPI IS FIXED!
+ *
+ * @deprecated This was only a temporary solution to an API problem.
  */
 @SuppressWarnings("MemberName")
 @NoArgsConstructor
 @Getter
 @ToString
+@Deprecated
 public class ScheduledCourse {
 
 	String event_id;

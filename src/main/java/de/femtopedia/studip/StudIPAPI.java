@@ -244,16 +244,16 @@ public class StudIPAPI {
 
 	/**
 	 * Returns data about the currently logged in user's schedule.
-	 * THIS METHOD WILL GET REMOVED, WHEN THE RESTAPI SCHEDULE IS FIXED.
-	 * THIS IS A TEMPORARY METHOD, THAT HARDCODED PARSES THE HTML TEXT.
-	 * IT'S VERY UNSAFE AND CAN BREAK EASILY!!!
 	 *
 	 * @return the parsed and converted {@link de.femtopedia.studip.util.Schedule} object
 	 * @throws IOException              if reading errors occur
 	 * @throws IllegalArgumentException if the header values are broken
 	 * @throws IllegalAccessException   if the session isn't valid
 	 * @throws OAuthException           if any OAuth errors occur
+	 * @deprecated use {@link #getSchedule(String)} or {@link #getSchedule(String, String)}
+	 * instead. This was only a temporary solution to an API problem.
 	 */
+	@Deprecated
 	public de.femtopedia.studip.util.Schedule getSchedule()
 			throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
 		return ScheduleHelper.getData(this);
@@ -261,8 +261,6 @@ public class StudIPAPI {
 
 	/**
 	 * Returns data about the currently logged in user's schedule.
-	 * NOT FUNCTIONAL RIGHT NOW, BECAUSE OF PROBLEMS WITH THE RESTAPI.
-	 * USE {@link StudIPAPI#getSchedule()} INSTEAD UNTIL THE PROBLEM IS FIXED!
 	 *
 	 * @param userID The user to search for
 	 * @return the parsed and converted {@link Schedule} object
@@ -278,8 +276,6 @@ public class StudIPAPI {
 
 	/**
 	 * Returns data about the currently logged in user's schedule.
-	 * NOT FUNCTIONAL RIGHT NOW, BECAUSE OF PROBLEMS WITH THE RESTAPI.
-	 * USE {@link StudIPAPI#getSchedule()} INSTEAD UNTIL THE PROBLEM IS FIXED!
 	 *
 	 * @param userID     The user to search for
 	 * @param semesterID The semester to search for
