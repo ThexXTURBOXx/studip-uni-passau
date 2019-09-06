@@ -1,7 +1,7 @@
 package de.femtopedia.studip.json;
 
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
@@ -20,15 +20,21 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString
-@JsonAdapter(Schedule.ScheduleAdapter.class)
 public class Schedule {
 
+	@SerializedName("0")
 	private Map<String, ScheduledCourse> monday;
+	@SerializedName("1")
 	private Map<String, ScheduledCourse> tuesday;
+	@SerializedName("2")
 	private Map<String, ScheduledCourse> wednesday;
+	@SerializedName("3")
 	private Map<String, ScheduledCourse> thursday;
+	@SerializedName("4")
 	private Map<String, ScheduledCourse> friday;
+	@SerializedName("5")
 	private Map<String, ScheduledCourse> saturday;
+	@SerializedName("6")
 	private Map<String, ScheduledCourse> sunday;
 
 	/**
@@ -56,89 +62,6 @@ public class Schedule {
 			default:
 				return null;
 		}
-	}
-
-	/**
-	 * Simple JsonAdapter for {@link Schedule}s.
-	 */
-	class ScheduleAdapter extends TypeAdapter<Schedule> {
-
-		@Override
-		public void write(JsonWriter jsonWriter, Schedule schedule) throws IOException {
-			jsonWriter.beginArray();
-			for (int i = 0; i < 7; i++) {
-				Map<String, ScheduledCourse> day = schedule.getDay(i);
-				jsonWriter.beginObject();
-				for (Map.Entry<String, ScheduledCourse> entry : day.entrySet()) {
-					jsonWriter.name(entry.getKey());
-					jsonWriter.beginObject();
-					ScheduledCourse c = entry.getValue();
-					jsonWriter.name("start");
-					jsonWriter.value(c.getStart());
-					jsonWriter.name("end");
-					jsonWriter.value(c.getEnd());
-					jsonWriter.name("content");
-					jsonWriter.value(c.getContent());
-					jsonWriter.name("title");
-					jsonWriter.value(c.getTitle());
-					jsonWriter.name("color");
-					jsonWriter.value(c.getColor());
-					jsonWriter.name("type");
-					jsonWriter.value(c.getType());
-					jsonWriter.endObject();
-				}
-				jsonWriter.endObject();
-			}
-			jsonWriter.endArray();
-		}
-
-		@Override
-		public Schedule read(JsonReader jsonReader) throws IOException {
-			Schedule sched = new Schedule(new HashMap<>(), new HashMap<>(), new HashMap<>(), new HashMap<>(),
-					new HashMap<>(), new HashMap<>(), new HashMap<>());
-			jsonReader.beginArray();
-			int day = 0;
-			while (jsonReader.hasNext()) {
-				Map<String, ScheduledCourse> daySched = sched.getDay(day);
-				boolean object = jsonReader.peek() == JsonToken.BEGIN_OBJECT;
-				if (object)
-					jsonReader.beginObject();
-				else
-					jsonReader.beginArray();
-				while (jsonReader.hasNext()) {
-					String name = jsonReader.nextName();
-					jsonReader.beginObject();
-					jsonReader.nextName();
-					int start = jsonReader.nextInt();
-					jsonReader.nextName();
-					int end = jsonReader.nextInt();
-					jsonReader.nextName();
-					String content = jsonReader.nextString();
-					jsonReader.nextName();
-					String title = jsonReader.nextString();
-					jsonReader.nextName();
-					String color = jsonReader.nextString();
-					jsonReader.nextName();
-					String type = jsonReader.nextString();
-					daySched.put(name, new ScheduledCourse(
-							start,
-							end,
-							content,
-							title,
-							color,
-							type));
-					jsonReader.endObject();
-				}
-				if (object)
-					jsonReader.endObject();
-				else
-					jsonReader.endArray();
-				day++;
-			}
-			jsonReader.endArray();
-			return sched;
-		}
-
 	}
 
 }
