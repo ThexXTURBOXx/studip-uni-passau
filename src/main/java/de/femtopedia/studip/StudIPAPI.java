@@ -6,6 +6,7 @@ import de.femtopedia.studip.json.Contacts;
 import de.femtopedia.studip.json.Course;
 import de.femtopedia.studip.json.Courses;
 import de.femtopedia.studip.json.Events;
+import de.femtopedia.studip.json.Folder;
 import de.femtopedia.studip.json.Schedule;
 import de.femtopedia.studip.json.Semester;
 import de.femtopedia.studip.json.Semesters;
@@ -213,6 +214,21 @@ public class StudIPAPI {
 	public Courses getCourses(String userID)
 			throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
 		return this.getData("user/" + userID + "/courses", Courses.class);
+	}
+
+	/**
+	 * Returns the top folder object of the searched course.
+	 *
+	 * @param courseID The course to search for
+	 * @return the parsed and converted {@link Folder} object
+	 * @throws IOException              if reading errors occur
+	 * @throws IllegalArgumentException if the header values are broken
+	 * @throws IllegalAccessException   if the session isn't valid
+	 * @throws OAuthException           if any OAuth errors occur
+	 */
+	public Folder getCourseTopFolder(String courseID)
+			throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
+		return this.getData("course/" + courseID + "/top_folder", Folder.class);
 	}
 
 	/**
