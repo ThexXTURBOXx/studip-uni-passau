@@ -1,4 +1,5 @@
 language: java
+jdk: openjdk8
 sudo: false
 
 before_script: mvn compile checkstyle:check -Dcheckstyle.config.location=http://femtopedia.de/checkstyle_new.xml

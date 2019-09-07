@@ -114,6 +114,8 @@ public class StudIPAPI {
 		CustomAccessHttpResponse response = null;
 		try {
 			response = this.get(apiUrl);
+			if (response.getResponse().code() == 404)
+				throw new IllegalAccessException("Not found!");
 			//Need to hardcode, because server returns 200 anyway
 			if (!response.getResponse().body().contentType().subtype().equals("json"))
 				throw new IllegalAccessException("Session is not valid!");
