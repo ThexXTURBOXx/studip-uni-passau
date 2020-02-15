@@ -13,7 +13,6 @@ import de.femtopedia.studip.json.Semesters;
 import de.femtopedia.studip.json.User;
 import de.femtopedia.studip.shib.CustomAccessHttpResponse;
 import de.femtopedia.studip.shib.OAuthClient;
-import de.femtopedia.studip.util.ScheduleHelper;
 import java.io.IOException;
 import oauth.signpost.exception.OAuthException;
 
@@ -258,23 +257,6 @@ public class StudIPAPI {
 	public Semester getSemester(String semesterID)
 			throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
 		return this.getData("semester/" + semesterID, Semester.class);
-	}
-
-	/**
-	 * Returns data about the currently logged in user's schedule.
-	 *
-	 * @return the parsed and converted {@link de.femtopedia.studip.util.Schedule} object
-	 * @throws IOException              if reading errors occur
-	 * @throws IllegalArgumentException if the header values are broken
-	 * @throws IllegalAccessException   if the session isn't valid
-	 * @throws OAuthException           if any OAuth errors occur
-	 * @deprecated use {@link #getSchedule(String)} or {@link #getSchedule(String, String)}
-	 * instead. This was only a temporary solution to an API problem.
-	 */
-	@Deprecated
-	public de.femtopedia.studip.util.Schedule getSchedule()
-			throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
-		return ScheduleHelper.getData(this);
 	}
 
 	/**
