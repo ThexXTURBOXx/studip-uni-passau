@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 public class Events {
 
-	private List<Event> collection;
-	private Pagination pagination;
+    private List<Event> collection;
+    private Pagination pagination;
 
 }

@@ -13,9 +13,9 @@ import lombok.ToString;
 @ToString
 public class Links {
 
-	private String first;
-	private String previous;
-	private String next;
-	private String last;
+    private String first;
+    private String previous;
+    private String next;
+    private String last;
 
 }

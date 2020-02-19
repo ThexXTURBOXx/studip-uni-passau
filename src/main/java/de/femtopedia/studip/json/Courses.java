@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 public class Courses {
 
-	private Map<String, Course> collection;
-	private Pagination pagination;
+    private Map<String, Course> collection;
+    private Pagination pagination;
 
 }

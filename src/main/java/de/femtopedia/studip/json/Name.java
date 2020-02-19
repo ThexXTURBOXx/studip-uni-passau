@@ -13,11 +13,11 @@ import lombok.ToString;
 @ToString
 public class Name {
 
-	private String username;
-	private String formatted;
-	private String family;
-	private String given;
-	private String prefix;
-	private String suffix;
+    private String username;
+    private String formatted;
+    private String family;
+    private String given;
+    private String prefix;
+    private String suffix;
 
 }

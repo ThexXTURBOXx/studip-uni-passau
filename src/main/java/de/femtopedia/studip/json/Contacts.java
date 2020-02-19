@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 public class Contacts {
 
-	private List<Contact> collection;
-	private Pagination pagination;
+    private List<Contact> collection;
+    private Pagination pagination;
 
 }

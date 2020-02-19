@@ -13,12 +13,12 @@ import lombok.ToString;
 @ToString
 public class Semester {
 
-	private String id;
-	private String title;
-	private String description;
-	private long begin;
-	private long end;
-	private long seminars_begin;
-	private long seminars_end;
+    private String id;
+    private String title;
+    private String description;
+    private long begin;
+    private long end;
+    private long seminars_begin;
+    private long seminars_end;
 
 }

@@ -13,9 +13,9 @@ import lombok.ToString;
 @ToString
 public class Pagination {
 
-	private int total;
-	private int offset;
-	private int limit;
-	private Links links;
+    private int total;
+    private int offset;
+    private int limit;
+    private Links links;
 
 }

@@ -13,8 +13,8 @@ import lombok.ToString;
 @ToString
 public class Modules {
 
-	private String forum;
-	private String documents;
-	private String wiki;
+    private String forum;
+    private String documents;
+    private String wiki;
 
 }

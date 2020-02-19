@@ -14,11 +14,11 @@ import lombok.ToString;
 @ToString
 public class ScheduledCourse {
 
-	private int start;
-	private int end;
-	private String content;
-	private String title;
-	private String color;
-	private String type;
+    private int start;
+    private int end;
+    private String content;
+    private String title;
+    private String color;
+    private String type;
 
 }

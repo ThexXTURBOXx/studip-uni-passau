@@ -1,18 +1,17 @@
 package de.femtopedia.studip.json;
 
-import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * A class representing a Folder.
+ * A class representing a Subfolder.
  */
 @SuppressWarnings("MemberName")
 @NoArgsConstructor
 @Getter
 @ToString
-public class Folder {
+public class SubFolder {
 
     private String id;
     private String user_id;
@@ -27,7 +26,5 @@ public class Folder {
     private boolean is_visible;
     private boolean is_readable;
     private boolean is_writable;
-    private List<SubFolder> subfolders;
-    private List<SubFile> file_refs;
 
 }
