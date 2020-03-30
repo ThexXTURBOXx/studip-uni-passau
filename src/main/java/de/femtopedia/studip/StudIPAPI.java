@@ -214,7 +214,7 @@ public class StudIPAPI {
      */
     public Courses getCourses(String userID)
             throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
-        return this.getData("user/" + userID + "/courses", Courses.class);
+        return this.getData("user/" + userID + "/courses?limit=10000", Courses.class);
     }
 
     /**
