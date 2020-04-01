@@ -15,7 +15,7 @@ public class DataField {
 
     private String type;
     private String id;
-    private String name;
+    private Object name;
     private String value;
 
 }
