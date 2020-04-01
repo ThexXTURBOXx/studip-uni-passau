@@ -10,7 +10,7 @@
 
     <groupId>de.femtopedia.studip</groupId>
     <artifactId>studip-uni-passau</artifactId>
-    <version>1.8</version>
+    <version>1.8.1-SNAPSHOT</version>
     <name>StudIP-Library-Uni-Passau</name>
     <description>A simple wrapper around the StudIP RestAPI from Uni Passau</description>
     <url>https://github.com/ThexXTURBOXx/studip-uni-passau</url>
@@ -74,7 +74,7 @@
         <connection>scm:git:git://github.com/ThexXTURBOXx/studip-uni-passau.git</connection>
         <developerConnection>scm:git:git@github.com:ThexXTURBOXx/studip-uni-passau.git</developerConnection>
         <url>https://github.com/ThexXTURBOXx/studip-uni-passau</url>
-        <tag>1.8</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <build>
