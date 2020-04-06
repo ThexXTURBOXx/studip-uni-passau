@@ -36,7 +36,9 @@ public class StudIPAPI {
     public StudIPAPI(String consumerKey, String consumerSecret) {
         this.oAuthClient = new OAuthClient();
         this.oAuthClient.setupOAuth(consumerKey, consumerSecret);
-        this.gson = new GsonBuilder().create();
+        GsonBuilder builder = new GsonBuilder();
+        JsonObjectRegister.init(builder);
+        this.gson = builder.create();
     }
 
     /**
