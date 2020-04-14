@@ -1,24 +1,24 @@
 package de.femtopedia.studip.json;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 /**
  * A class representing a Semester.
  */
 @SuppressWarnings({"MemberName", "JavadocVariable"})
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @ToString
 public class Semester {
 
-    private String id;
-    private String title;
-    private String description;
-    private long begin;
-    private long end;
-    private long seminars_begin;
-    private long seminars_end;
+    private final String id;
+    private final String title;
+    private final String description;
+    private final long begin;
+    private final long end;
+    private final long seminars_begin;
+    private final long seminars_end;
 
 }

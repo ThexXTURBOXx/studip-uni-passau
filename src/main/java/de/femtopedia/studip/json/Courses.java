@@ -2,19 +2,19 @@ package de.femtopedia.studip.json;
 
 import java.util.Map;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 /**
  * A class representing a set of Courses.
  */
 @SuppressWarnings({"MemberName", "JavadocVariable"})
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @ToString
 public class Courses {
 
-    private Map<String, Course> collection;
-    private Pagination pagination;
+    private final Map<String, Course> collection;
+    private final Pagination pagination;
 
 }

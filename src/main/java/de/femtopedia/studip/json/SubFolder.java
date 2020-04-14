@@ -1,30 +1,30 @@
 package de.femtopedia.studip.json;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 /**
  * A class representing a Subfolder.
  */
 @SuppressWarnings({"MemberName", "JavadocVariable"})
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @ToString
 public class SubFolder {
 
-    private String id;
-    private String user_id;
-    private String parent_id;
-    private String range_id;
-    private String range_type;
-    private String folder_type;
-    private String name;
-    private String description;
-    private long mkdate;
-    private long chdate;
-    private boolean is_visible;
-    private boolean is_readable;
-    private boolean is_writable;
+    private final String id;
+    private final String user_id;
+    private final String parent_id;
+    private final String range_id;
+    private final String range_type;
+    private final String folder_type;
+    private final String name;
+    private final String description;
+    private final long mkdate;
+    private final long chdate;
+    private final boolean is_visible;
+    private final boolean is_readable;
+    private final boolean is_writable;
 
 }

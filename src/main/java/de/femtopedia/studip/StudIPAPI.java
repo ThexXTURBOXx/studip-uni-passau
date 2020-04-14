@@ -31,12 +31,12 @@ public class StudIPAPI {
     /**
      * The instance of the {@link OAuthClient} that is used.
      */
-    private OAuthClient oAuthClient;
+    private final OAuthClient oAuthClient;
 
     /**
      * The instance of {@link Gson} that is used.
      */
-    private Gson gson;
+    private final Gson gson;
 
     /**
      * Initializes a new {@link StudIPAPI} instance.

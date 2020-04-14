@@ -17,19 +17,19 @@ import lombok.ToString;
 public class Schedule {
 
     @SerializedName("0")
-    private Map<String, ScheduledCourse> monday;
+    private final Map<String, ScheduledCourse> monday;
     @SerializedName("1")
-    private Map<String, ScheduledCourse> tuesday;
+    private final Map<String, ScheduledCourse> tuesday;
     @SerializedName("2")
-    private Map<String, ScheduledCourse> wednesday;
+    private final Map<String, ScheduledCourse> wednesday;
     @SerializedName("3")
-    private Map<String, ScheduledCourse> thursday;
+    private final Map<String, ScheduledCourse> thursday;
     @SerializedName("4")
-    private Map<String, ScheduledCourse> friday;
+    private final Map<String, ScheduledCourse> friday;
     @SerializedName("5")
-    private Map<String, ScheduledCourse> saturday;
+    private final Map<String, ScheduledCourse> saturday;
     @SerializedName("6")
-    private Map<String, ScheduledCourse> sunday;
+    private final Map<String, ScheduledCourse> sunday;
 
     /**
      * Helper method for getting the day via Integers.

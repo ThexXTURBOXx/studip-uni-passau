@@ -1,21 +1,21 @@
 package de.femtopedia.studip.json;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 /**
  * A class representing a DataField.
  */
 @SuppressWarnings({"MemberName", "JavadocVariable"})
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @ToString
 public class DataField {
 
-    private String type;
-    private String id;
-    private Object name;
-    private String value;
+    private final String type;
+    private final String id;
+    private final Object name;
+    private final String value;
 
 }

@@ -1,25 +1,25 @@
 package de.femtopedia.studip.json;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 /**
  * A class representing Members.
  */
 @SuppressWarnings({"MemberName", "JavadocVariable"})
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @ToString
 public class Members {
 
-    private String user;
-    private int user_count;
-    private String autor;
-    private int autor_count;
-    private String tutor;
-    private int tutor_count;
-    private String dozent;
-    private int dozent_count;
+    private final String user;
+    private final int user_count;
+    private final String autor;
+    private final int autor_count;
+    private final String tutor;
+    private final int tutor_count;
+    private final String dozent;
+    private final int dozent_count;
 
 }

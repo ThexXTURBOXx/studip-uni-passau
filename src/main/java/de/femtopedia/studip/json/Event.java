@@ -1,26 +1,26 @@
 package de.femtopedia.studip.json;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 /**
  * A class representing a Event.
  */
 @SuppressWarnings({"MemberName", "JavadocVariable"})
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @ToString
 public class Event {
 
-    private String event_id;
-    private String course;
-    private long start;
-    private long end;
-    private String title;
-    private String description;
-    private String categories;
-    private String room;
-    private String canceled;
+    private final String event_id;
+    private final String course;
+    private final long start;
+    private final long end;
+    private final String title;
+    private final String description;
+    private final String categories;
+    private final String room;
+    private final String canceled;
 
 }

@@ -2,19 +2,19 @@ package de.femtopedia.studip.json;
 
 import java.util.List;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 /**
  * A class representing a set of Contacts.
  */
 @SuppressWarnings({"MemberName", "JavadocVariable"})
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @ToString
 public class Contacts {
 
-    private List<Contact> collection;
-    private Pagination pagination;
+    private final List<Contact> collection;
+    private final Pagination pagination;
 
 }

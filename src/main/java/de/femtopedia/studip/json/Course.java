@@ -2,30 +2,30 @@ package de.femtopedia.studip.json;
 
 import java.util.Map;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 /**
  * A class representing a Course.
  */
 @SuppressWarnings({"MemberName", "JavadocVariable"})
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @ToString
 public class Course {
 
-    private String course_id;
-    private String number;
-    private String title;
-    private String subtitle;
-    private String type;
-    private String description;
-    private String location;
-    private Map<String, Contact> lecturers;
-    private Members members;
-    private String start_semester;
-    private String end_semester;
-    private Modules modules;
-    private int group;
+    private final String course_id;
+    private final String number;
+    private final String title;
+    private final String subtitle;
+    private final String type;
+    private final String description;
+    private final String location;
+    private final Map<String, Contact> lecturers;
+    private final Members members;
+    private final String start_semester;
+    private final String end_semester;
+    private final Modules modules;
+    private final int group;
 
 }

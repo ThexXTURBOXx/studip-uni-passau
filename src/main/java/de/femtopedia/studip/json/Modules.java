@@ -1,20 +1,20 @@
 package de.femtopedia.studip.json;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 /**
  * A class representing Modules.
  */
 @SuppressWarnings({"MemberName", "JavadocVariable"})
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @ToString
 public class Modules {
 
-    private String forum;
-    private String documents;
-    private String wiki;
+    private final String forum;
+    private final String documents;
+    private final String wiki;
 
 }

@@ -2,19 +2,19 @@ package de.femtopedia.studip.json;
 
 import java.util.List;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 /**
  * A class representing a set of Events.
  */
 @SuppressWarnings({"MemberName", "JavadocVariable"})
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @ToString
 public class Events {
 
-    private List<Event> collection;
-    private Pagination pagination;
+    private final List<Event> collection;
+    private final Pagination pagination;
 
 }

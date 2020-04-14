@@ -1,21 +1,21 @@
 package de.femtopedia.studip.json;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 /**
  * A class representing Links.
  */
 @SuppressWarnings({"MemberName", "JavadocVariable"})
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @ToString
 public class Links {
 
-    private String first;
-    private String previous;
-    private String next;
-    private String last;
+    private final String first;
+    private final String previous;
+    private final String next;
+    private final String last;
 
 }
