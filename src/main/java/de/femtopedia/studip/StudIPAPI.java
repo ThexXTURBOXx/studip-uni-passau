@@ -10,8 +10,6 @@ import de.femtopedia.studip.json.Folder;
 import de.femtopedia.studip.json.Schedule;
 import de.femtopedia.studip.json.Semester;
 import de.femtopedia.studip.json.Semesters;
-import de.femtopedia.studip.json.SubFile;
-import de.femtopedia.studip.json.SubFolder;
 import de.femtopedia.studip.json.User;
 import de.femtopedia.studip.shib.CustomAccessHttpResponse;
 import de.femtopedia.studip.shib.OAuthClient;
@@ -23,8 +21,20 @@ import oauth.signpost.exception.OAuthException;
  */
 public class StudIPAPI {
 
-    private static final String BASE_URL = "https://studip.uni-passau.de/studip/api.php/";
+    /**
+     * The URL base for the RestAPI.
+     */
+    private static final String BASE_URL =
+            "https://studip.uni-passau.de/studip/api.php/";
+
+    /**
+     * The instance of the {@link OAuthClient} that is used.
+     */
     private OAuthClient oAuthClient;
+
+    /**
+     * The instance of {@link Gson} that is used.
+     */
     private Gson gson;
 
     /**
@@ -42,11 +52,12 @@ public class StudIPAPI {
     }
 
     /**
-     * Retrieves a Request Token and returns a authorization URL, which you have to open in a browser
-     * and approve access to your account.
+     * Retrieves a Request Token and returns a authorization URL, which you
+     * have to open in a browser and approve access to your account.
      * This is the first function to call in the OAuth process.
      *
-     * @param callback A callback URI or {@link oauth.signpost.OAuth#OUT_OF_BAND}.
+     * @param callback A callback URI or
+     *                 {@link oauth.signpost.OAuth#OUT_OF_BAND}.
      * @return The Authorization URL to call
      * @throws OAuthException if any OAuth errors occur
      */
@@ -56,8 +67,9 @@ public class StudIPAPI {
 
     /**
      * Retrieves a working Access Token and saves it.
-     * This is the second function to call in the OAuth process (call {@link StudIPAPI#getAuthorizationUrl(String)}
-     * first and authorize in a browser).
+     * This is the second function to call in the OAuth process (call
+     * {@link StudIPAPI#getAuthorizationUrl(String)} first and authorize in a
+     * browser).
      *
      * @param verifyToken The Verification Code from the Authorization process.
      * @throws OAuthException if any OAuth errors occur
@@ -96,13 +108,14 @@ public class StudIPAPI {
      * @throws IllegalAccessException   if the session isn't valid
      * @throws OAuthException           if any OAuth errors occur
      */
-    public CustomAccessHttpResponse get(String url)
-            throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
+    public CustomAccessHttpResponse get(String url) throws IOException,
+            IllegalArgumentException, IllegalAccessException, OAuthException {
         return this.oAuthClient.get(BASE_URL + url);
     }
 
     /**
-     * Performs a HTTP GET Request and converts the site's content into the given Object type using Gson.
+     * Performs a HTTP GET Request and converts the site's content into the
+     * given Object type using {@link Gson}.
      *
      * @param apiUrl   The URL to get
      * @param objClass The class to cast to
@@ -113,20 +126,24 @@ public class StudIPAPI {
      * @throws IllegalAccessException   if the session isn't valid
      * @throws OAuthException           if any OAuth errors occur
      */
-    public <T> T getData(String apiUrl, Class<T> objClass)
-            throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
+    public <T> T getData(String apiUrl, Class<T> objClass) throws IOException,
+            IllegalArgumentException, IllegalAccessException, OAuthException {
         CustomAccessHttpResponse response = null;
         try {
             response = this.get(apiUrl);
-            if (response.getResponse().code() == 404)
+            if (response.getResponse().code() == 404) {
                 throw new IllegalAccessException("Not found!");
+            }
             //Need to hardcode, because server returns 200 anyway
-            if (!response.getResponse().body().contentType().subtype().equals("json"))
+            if (!response.getResponse().body().contentType()
+                    .subtype().equals("json")) {
                 throw new IllegalAccessException("Session is not valid!");
+            }
             return gson.fromJson(response.readLine(), objClass);
         } finally {
-            if (response != null)
+            if (response != null) {
                 response.close();
+            }
         }
     }
 
@@ -139,8 +156,8 @@ public class StudIPAPI {
      * @throws IllegalAccessException   if the session isn't valid
      * @throws OAuthException           if any OAuth errors occur
      */
-    public User getCurrentUserData()
-            throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
+    public User getCurrentUserData() throws IOException,
+            IllegalArgumentException, IllegalAccessException, OAuthException {
         return this.getData("user", User.class);
     }
 
@@ -154,8 +171,8 @@ public class StudIPAPI {
      * @throws IllegalAccessException   if the session isn't valid
      * @throws OAuthException           if any OAuth errors occur
      */
-    public User getUserData(String userID)
-            throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
+    public User getUserData(String userID) throws IOException,
+            IllegalArgumentException, IllegalAccessException, OAuthException {
         return this.getData("user/" + userID, User.class);
     }
 
@@ -169,8 +186,8 @@ public class StudIPAPI {
      * @throws IllegalAccessException   if the session isn't valid
      * @throws OAuthException           if any OAuth errors occur
      */
-    public Contacts getContacts(String userID)
-            throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
+    public Contacts getContacts(String userID) throws IOException,
+            IllegalArgumentException, IllegalAccessException, OAuthException {
         return this.getData("user/" + userID + "/contacts", Contacts.class);
     }
 
@@ -184,8 +201,8 @@ public class StudIPAPI {
      * @throws IllegalAccessException   if the session isn't valid
      * @throws OAuthException           if any OAuth errors occur
      */
-    public Events getEvents(String userID)
-            throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
+    public Events getEvents(String userID) throws IOException,
+            IllegalArgumentException, IllegalAccessException, OAuthException {
         return this.getData("user/" + userID + "/events", Events.class);
     }
 
@@ -199,8 +216,8 @@ public class StudIPAPI {
      * @throws IllegalAccessException   if the session isn't valid
      * @throws OAuthException           if any OAuth errors occur
      */
-    public Course getCourse(String courseID)
-            throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
+    public Course getCourse(String courseID) throws IOException,
+            IllegalArgumentException, IllegalAccessException, OAuthException {
         return this.getData("course/" + courseID, Course.class);
     }
 
@@ -214,9 +231,10 @@ public class StudIPAPI {
      * @throws IllegalAccessException   if the session isn't valid
      * @throws OAuthException           if any OAuth errors occur
      */
-    public Courses getCourses(String userID)
-            throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
-        return this.getData("user/" + userID + "/courses?limit=10000", Courses.class);
+    public Courses getCourses(String userID) throws IOException,
+            IllegalArgumentException, IllegalAccessException, OAuthException {
+        return this.getData("user/" + userID + "/courses?limit=10000",
+                Courses.class);
     }
 
     /**
@@ -229,8 +247,8 @@ public class StudIPAPI {
      * @throws IllegalAccessException   if the session isn't valid
      * @throws OAuthException           if any OAuth errors occur
      */
-    public Folder getCourseTopFolder(String courseID)
-            throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
+    public Folder getCourseTopFolder(String courseID) throws IOException,
+            IllegalArgumentException, IllegalAccessException, OAuthException {
         return this.getData("course/" + courseID + "/top_folder", Folder.class);
     }
 
@@ -244,8 +262,8 @@ public class StudIPAPI {
      * @throws IllegalAccessException   if the session isn't valid
      * @throws OAuthException           if any OAuth errors occur
      */
-    public Folder getFolder(String folderID)
-            throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
+    public Folder getFolder(String folderID) throws IOException,
+            IllegalArgumentException, IllegalAccessException, OAuthException {
         return this.getData("folder/" + folderID, Folder.class);
     }
 
@@ -258,8 +276,8 @@ public class StudIPAPI {
      * @throws IllegalAccessException   if the session isn't valid
      * @throws OAuthException           if any OAuth errors occur
      */
-    public Semesters getSemesters()
-            throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
+    public Semesters getSemesters() throws IOException,
+            IllegalArgumentException, IllegalAccessException, OAuthException {
         return this.getData("semesters", Semesters.class);
     }
 
@@ -273,8 +291,8 @@ public class StudIPAPI {
      * @throws IllegalAccessException   if the session isn't valid
      * @throws OAuthException           if any OAuth errors occur
      */
-    public Semester getSemester(String semesterID)
-            throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
+    public Semester getSemester(String semesterID) throws IOException,
+            IllegalArgumentException, IllegalAccessException, OAuthException {
         return this.getData("semester/" + semesterID, Semester.class);
     }
 
@@ -288,8 +306,8 @@ public class StudIPAPI {
      * @throws IllegalAccessException   if the session isn't valid
      * @throws OAuthException           if any OAuth errors occur
      */
-    public Schedule getSchedule(String userID)
-            throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
+    public Schedule getSchedule(String userID) throws IOException,
+            IllegalArgumentException, IllegalAccessException, OAuthException {
         return this.getData("user/" + userID + "/schedule", Schedule.class);
     }
 
@@ -305,8 +323,10 @@ public class StudIPAPI {
      * @throws OAuthException           if any OAuth errors occur
      */
     public Schedule getSchedule(String userID, String semesterID)
-            throws IOException, IllegalArgumentException, IllegalAccessException, OAuthException {
-        return this.getData("user/" + userID + "/schedule/" + semesterID, Schedule.class);
+            throws IOException, IllegalArgumentException,
+            IllegalAccessException, OAuthException {
+        return this.getData("user/" + userID + "/schedule/" + semesterID,
+                Schedule.class);
     }
 
 }

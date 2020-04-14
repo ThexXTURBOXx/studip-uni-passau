@@ -7,7 +7,7 @@ import lombok.ToString;
 /**
  * A class representing a Subfolder.
  */
-@SuppressWarnings("MemberName")
+@SuppressWarnings({"MemberName", "JavadocVariable"})
 @NoArgsConstructor
 @Getter
 @ToString

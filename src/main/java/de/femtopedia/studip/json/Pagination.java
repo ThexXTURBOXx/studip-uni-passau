@@ -7,7 +7,7 @@ import lombok.ToString;
 /**
  * A class representing a Pagination.
  */
-@SuppressWarnings("MemberName")
+@SuppressWarnings({"MemberName", "JavadocVariable"})
 @NoArgsConstructor
 @Getter
 @ToString

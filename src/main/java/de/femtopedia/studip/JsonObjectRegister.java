@@ -22,8 +22,20 @@ import de.femtopedia.studip.json.SubFile;
 import de.femtopedia.studip.json.SubFolder;
 import de.femtopedia.studip.json.User;
 
-public class JsonObjectRegister {
+/**
+ * Utility class for registering all JSON Objects.
+ */
+public final class JsonObjectRegister {
 
+    private JsonObjectRegister() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Registers all JSON Objects to the given {@link GsonBuilder}.
+     *
+     * @param builder The builder to register the objects to.
+     */
     public static void init(GsonBuilder builder) {
         register(builder, Contact.class);
         register(builder, Contacts.class);
@@ -48,7 +60,8 @@ public class JsonObjectRegister {
     }
 
     private static <T> void register(GsonBuilder builder, Class<T> clazz) {
-        builder.registerTypeAdapterFactory(new EmptyArrayAdapter<>(clazz));
+        builder.registerTypeAdapterFactory(
+                new EmptyArrayAdapterFactory<>(clazz));
     }
 
 }

@@ -8,7 +8,7 @@ import lombok.ToString;
 /**
  * A class representing a Scheduled Course.
  */
-@SuppressWarnings("MemberName")
+@SuppressWarnings({"MemberName", "JavadocVariable"})
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString

@@ -7,7 +7,7 @@ import lombok.ToString;
 /**
  * A class representing Links.
  */
-@SuppressWarnings("MemberName")
+@SuppressWarnings({"MemberName", "JavadocVariable"})
 @NoArgsConstructor
 @Getter
 @ToString

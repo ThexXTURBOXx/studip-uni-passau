@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
@@ -12,13 +14,16 @@
     <artifactId>studip-uni-passau</artifactId>
     <version>1.8.1-SNAPSHOT</version>
     <name>StudIP-Library-Uni-Passau</name>
-    <description>A simple wrapper around the StudIP RestAPI from Uni Passau</description>
+    <description>A simple wrapper around the StudIP RestAPI from Uni Passau
+    </description>
     <url>https://github.com/ThexXTURBOXx/studip-uni-passau</url>
 
     <licenses>
         <license>
             <name>GPL-3.0 License</name>
-            <url>https://github.com/ThexXTURBOXx/studip-uni-passau/blob/master/LICENSE</url>
+            <url>
+                https://github.com/ThexXTURBOXx/studip-uni-passau/blob/master/LICENSE
+            </url>
             <distribution>repo</distribution>
             <comments>GNU General Public License v3.0</comments>
         </license>
@@ -66,13 +71,18 @@
         </snapshotRepository>
         <repository>
             <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/
+            </url>
         </repository>
     </distributionManagement>
 
     <scm>
-        <connection>scm:git:git://github.com/ThexXTURBOXx/studip-uni-passau.git</connection>
-        <developerConnection>scm:git:git@github.com:ThexXTURBOXx/studip-uni-passau.git</developerConnection>
+        <connection>
+            scm:git:git://github.com/ThexXTURBOXx/studip-uni-passau.git
+        </connection>
+        <developerConnection>
+            scm:git:git@github.com:ThexXTURBOXx/studip-uni-passau.git
+        </developerConnection>
         <url>https://github.com/ThexXTURBOXx/studip-uni-passau</url>
         <tag>HEAD</tag>
     </scm>
@@ -91,7 +101,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
                         <id>attach-javadoc</id>
@@ -117,12 +127,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.1.1</version>
                 <dependencies>
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>8.29</version>
+                        <version>8.31</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -147,7 +157,8 @@
                     <localCheckout>true</localCheckout>
                     <pushChanges>false</pushChanges>
                     <mavenExecutorId>forked-path</mavenExecutorId>
-                    <arguments>-Dgpg.passphrase=${gpg.passphrase} -Ddo-release</arguments>
+                    <arguments>-Dgpg.passphrase=${gpg.passphrase} -Ddo-release
+                    </arguments>
                 </configuration>
                 <dependencies>
                     <dependency>

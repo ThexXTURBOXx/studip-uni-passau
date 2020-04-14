@@ -8,7 +8,7 @@ import lombok.ToString;
 /**
  * A class representing a Course.
  */
-@SuppressWarnings("MemberName")
+@SuppressWarnings({"MemberName", "JavadocVariable"})
 @NoArgsConstructor
 @Getter
 @ToString
