@@ -1,5 +1,6 @@
 package de.femtopedia.studip.json;
 
+import de.femtopedia.studip.util.colors.Color;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,7 @@ public class ScheduledCourse {
     private int end;
     private String content;
     private String title;
-    private String color;
+    private Color color;
     private String type;
 
 }

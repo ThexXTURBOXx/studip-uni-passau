@@ -1,4 +1,4 @@
-package de.femtopedia.studip;
+package de.femtopedia.studip.util;
 
 import com.google.gson.GsonBuilder;
 import de.femtopedia.studip.json.Contact;
@@ -21,6 +21,9 @@ import de.femtopedia.studip.json.Semesters;
 import de.femtopedia.studip.json.SubFile;
 import de.femtopedia.studip.json.SubFolder;
 import de.femtopedia.studip.json.User;
+import de.femtopedia.studip.util.colors.Color;
+import de.femtopedia.studip.util.colors.ColorTypeAdapter;
+import de.femtopedia.studip.util.fix.EmptyArrayAdapterFactory;
 
 /**
  * Utility class for registering all JSON Objects.
@@ -37,29 +40,31 @@ public final class JsonObjectRegister {
      * @param builder The builder to register the objects to.
      */
     public static void init(GsonBuilder builder) {
-        register(builder, Contact.class);
-        register(builder, Contacts.class);
-        register(builder, Course.class);
-        register(builder, Courses.class);
-        register(builder, DataField.class);
-        register(builder, Event.class);
-        register(builder, Events.class);
-        register(builder, Folder.class);
-        register(builder, Links.class);
-        register(builder, Members.class);
-        register(builder, Modules.class);
-        register(builder, Name.class);
-        register(builder, Pagination.class);
-        register(builder, Schedule.class);
-        register(builder, ScheduledCourse.class);
-        register(builder, Semester.class);
-        register(builder, Semesters.class);
-        register(builder, SubFile.class);
-        register(builder, SubFolder.class);
-        register(builder, User.class);
+        registerFix(builder, Contact.class);
+        registerFix(builder, Contacts.class);
+        registerFix(builder, Course.class);
+        registerFix(builder, Courses.class);
+        registerFix(builder, DataField.class);
+        registerFix(builder, Event.class);
+        registerFix(builder, Events.class);
+        registerFix(builder, Folder.class);
+        registerFix(builder, Links.class);
+        registerFix(builder, Members.class);
+        registerFix(builder, Modules.class);
+        registerFix(builder, Name.class);
+        registerFix(builder, Pagination.class);
+        registerFix(builder, Schedule.class);
+        registerFix(builder, ScheduledCourse.class);
+        registerFix(builder, Semester.class);
+        registerFix(builder, Semesters.class);
+        registerFix(builder, SubFile.class);
+        registerFix(builder, SubFolder.class);
+        registerFix(builder, User.class);
+
+        builder.registerTypeAdapter(Color.class, new ColorTypeAdapter());
     }
 
-    private static <T> void register(GsonBuilder builder, Class<T> clazz) {
+    private static <T> void registerFix(GsonBuilder builder, Class<T> clazz) {
         builder.registerTypeAdapterFactory(
                 new EmptyArrayAdapterFactory<>(clazz));
     }

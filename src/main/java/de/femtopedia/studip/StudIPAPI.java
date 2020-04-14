@@ -13,6 +13,7 @@ import de.femtopedia.studip.json.Semesters;
 import de.femtopedia.studip.json.User;
 import de.femtopedia.studip.shib.CustomAccessHttpResponse;
 import de.femtopedia.studip.shib.OAuthClient;
+import de.femtopedia.studip.util.JsonObjectRegister;
 import java.io.IOException;
 import oauth.signpost.exception.OAuthException;
 

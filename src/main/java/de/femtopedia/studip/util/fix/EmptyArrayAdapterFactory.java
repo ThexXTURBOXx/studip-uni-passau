@@ -1,4 +1,4 @@
-package de.femtopedia.studip;
+package de.femtopedia.studip.util.fix;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
