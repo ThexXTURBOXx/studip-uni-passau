@@ -14,14 +14,12 @@ And of course its [release APK](http://femtopedia.de/studip/index.php).
 
 ## Including as dependency (Gradle)
 Add the following snippet to your **build.gradle** and change the version number:
-```Gradle
+```groovy
 repositories {
-    maven {
-        jcenter()
-    }
+    mavenCentral()
 }
 dependencies {
-    implementation 'de.femtopedia.studip:studip-uni-passau:...'
+    implementation 'de.femtopedia.studip:studip-uni-passau:...'
 }
 ```
 
@@ -40,22 +38,22 @@ Add the following snippet to your **pom.xml** and change the version number:
 Older builds are available in my Maven repo here: [http://femtopedia.de/maven](http://femtopedia.de/maven)
 
 ## Basic Usage
-```Java
-//Instantiate the API and set OAuth Credentials
+```java
+// Instantiate the API and set OAuth Credentials
 StudIPAPI api = new StudIPAPI("CONSUMER_KEY", "CONSUMER_SECRET");
 try {
-    //Print Authorization Url
+    // Print authorization URL
     System.out.println(api.getAuthorizationUrl("callback_scheme://callback_url"));
-    //Wait for user to input Verification Code
+    // Wait for user to input verification code
     api.verifyAccess(new Scanner(System.in).nextLine());
-    //Get the user data of the current logged in user
+    // Get the user data of the current logged in user
     User user = api.getCurrentUserData();
-    //Print the user's Family Name
+    // Print the user's family name
     System.out.println(user.getName().getFamily());
-    //Print the user's Email Adress
+    // Print the user's email address
     System.out.println(user.getEmail());
 } catch (IOException | IllegalAccessException | OAuthException e) {
-    //Print errors
+    // Print errors
     e.printStackTrace();
 }
 ```
