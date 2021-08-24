@@ -129,9 +129,7 @@ public class StudIPAPI {
      */
     public <T> T getData(String apiUrl, Class<T> objClass) throws IOException,
             IllegalArgumentException, IllegalAccessException, OAuthException {
-        CustomAccessHttpResponse response = null;
-        try {
-            response = this.get(apiUrl);
+        try (CustomAccessHttpResponse response = this.get(apiUrl)) {
             if (response.getResponse().code() == 404) {
                 throw new IllegalAccessException("Not found!");
             }
@@ -141,10 +139,6 @@ public class StudIPAPI {
                 throw new IllegalAccessException("Session is not valid!");
             }
             return gson.fromJson(response.readLine(), objClass);
-        } finally {
-            if (response != null) {
-                response.close();
-            }
         }
     }
 
