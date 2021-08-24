@@ -5,8 +5,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 @Getter
-@RequiredArgsConstructor
 @ToString
+@RequiredArgsConstructor
 public final class Color {
 
     /**

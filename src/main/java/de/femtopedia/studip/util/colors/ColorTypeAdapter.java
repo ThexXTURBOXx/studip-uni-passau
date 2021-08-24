@@ -19,7 +19,7 @@ public final class ColorTypeAdapter extends TypeAdapter<Color> {
         if (token == JsonToken.STRING) {
             return new Color(in.nextString());
         } else if (token == JsonToken.NUMBER) {
-            return new Color(in.nextInt() + "");
+            return new Color(String.valueOf(in.nextInt()));
         }
         return null;
     }
