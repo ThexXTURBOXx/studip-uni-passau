@@ -11,7 +11,7 @@
 
     <groupId>de.femtopedia.studip</groupId>
     <artifactId>studip-uni-passau</artifactId>
-    <version>1.9</version>
+    <version>1.9.1-SNAPSHOT</version>
     <name>StudIP-Library-Uni-Passau</name>
     <description>A simple wrapper around the StudIP RestAPI from Uni Passau
     </description>
@@ -82,7 +82,7 @@
             scm:git:git@github.com:ThexXTURBOXx/studip-uni-passau.git
         </developerConnection>
         <url>https://github.com/ThexXTURBOXx/studip-uni-passau</url>
-        <tag>1.9</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <build>
