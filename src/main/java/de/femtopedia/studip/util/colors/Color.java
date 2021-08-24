@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
+/**
+ * Class representing a color in the Stud.IP schedule.
+ */
 @Getter
 @ToString
 @RequiredArgsConstructor

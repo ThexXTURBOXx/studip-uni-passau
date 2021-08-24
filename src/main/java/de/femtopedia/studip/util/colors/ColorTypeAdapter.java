@@ -6,6 +6,10 @@ import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
+/**
+ * Class providing translation from JSON color indices to the color
+ * codes from Stud.IP.
+ */
 public final class ColorTypeAdapter extends TypeAdapter<Color> {
 
     @Override
