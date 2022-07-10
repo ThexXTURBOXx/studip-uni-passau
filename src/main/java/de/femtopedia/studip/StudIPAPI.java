@@ -16,6 +16,7 @@ import de.femtopedia.studip.shib.OAuthClient;
 import de.femtopedia.studip.util.JsonObjectRegister;
 import java.io.IOException;
 import oauth.signpost.exception.OAuthException;
+import okhttp3.ResponseBody;
 
 /**
  * A simple-to-use API class to access the Stud.IP RestAPI.
@@ -134,11 +135,12 @@ public class StudIPAPI {
                 throw new IllegalAccessException("Not found!");
             }
             // Need to hardcode, because server returns 200 anyway
-            if (!response.getResponse().body().contentType()
-                    .subtype().equals("json")) {
-                throw new IllegalAccessException("Session is not valid!");
+            try (ResponseBody body = response.getResponse().body()) {
+                if (!body.contentType().subtype().equals("json")) {
+                    throw new IllegalAccessException("Session is not valid!");
+                }
+                return gson.fromJson(response.readLine(), objClass);
             }
-            return gson.fromJson(response.readLine(), objClass);
         }
     }
 
